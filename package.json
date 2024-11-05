@@ -1,21 +1,41 @@
 {
-  "name": "htmltemplate",
-  "version": "2.1.0",
-  "main": "server.js",
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "start": "node server.js",
-    "dev": "open-cli http://localhost:1234 && nodemon server.js"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "helmet": "^4.2.0",
-    "prerender-node": "^3.2.5"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.6",
-    "open-cli": "^6.0.1"
-  }
+    "name": "webpack-template",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Webpack starter kit for html5, css3, sass 7-1 and JS",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack-dev-server --config webpack.dev.js --open",
+        "build": "webpack --config webpack.prod.js",
+        "preview": "npm run build && http-server dist"
+    },
+    "keywords": [],
+    "author": "Surtidata SAS",
+    "license": "ISC",
+    "devDependencies": {
+
+
+        "css-loader": "^6.7.3",
+        "file-loader": "^6.2.0",
+        "html-loader": "^4.2.0",
+
+
+
+
+        "html-webpack-plugin": "^5.5.0",
+        "http-server": "^0.12.3",
+        "mini-css-extract-plugin": "^2.7.2",
+        "node-sass": "^9.0.0",
+        "optimize-css-assets-webpack-plugin": "^6.0.1",
+        "popper.js": "^1.14.7",
+        "sass-loader": "^13.2.0",
+        "style-loader": "^3.3.1",
+        "webpack": "^5.76.0",
+        "webpack-cli": "^5.0.1",
+        "webpack-dev-server": "^4.15.1",
+        "webpack-merge": "^4.2.1"
+    },
+    "dependencies": {
+        "clean-webpack-plugin": "^2.0.0"
+    }
 }
