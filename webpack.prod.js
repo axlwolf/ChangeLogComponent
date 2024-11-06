@@ -8,61 +8,61 @@ const TerserPlugin = require("terser-webpack-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = merge(common, {
-    mode: "production",
-    output: {
-        filename: "[name].[contentHash].bundle.js",
-        path: path.resolve(__dirname, "dist")
-    },
-    optimization: {
-        minimizer: [
-            new OptimizeCssAssetsPlugin(),
-            new TerserPlugin(),
-            new HtmlWebpackPlugin({
-                template: "./src/index.html",
-                inject: true,
-                filename: "index.html",
-                minify: {
-                    removeAttributeQuotes: true,
-                    collapseWhitespace: true,
-                    removeComments: true
-                }
-            }),
-            new HtmlWebpackPlugin({
-                template: "./src/about.html",
-                inject: true,
-                filename: "about.html",
-                minify: {
-                    removeAttributeQuotes: true,
-                    collapseWhitespace: true,
-                    removeComments: true
-                }
-            }),
-            new HtmlWebpackPlugin({
-                template: "./src/contact.html",
-                inject: true,
-                filename: "contact.html",
-                minify: {
-                    removeAttributeQuotes: true,
-                    collapseWhitespace: true,
-                    removeComments: true
-                }
-            })
-        ]
-    },
-    plugins: [
-        new MiniCssExtractPlugin({ filename: "[name].[contentHash].css" }),
-        new CleanWebpackPlugin()
+  mode: "production",
+  output: {
+    filename: "[name].[contentHash].bundle.js",
+    path: path.resolve(__dirname, "dist"),
+  },
+  optimization: {
+    minimizer: [
+      new OptimizeCssAssetsPlugin(),
+      new TerserPlugin(),
+      new HtmlWebpackPlugin({
+        template: "./src/index.html",
+        inject: true,
+        filename: "index.html",
+        minify: {
+          removeAttributeQuotes: true,
+          collapseWhitespace: true,
+          removeComments: true,
+        },
+      }),
+      // new HtmlWebpackPlugin({
+      //     template: "./src/about.html",
+      //     inject: true,
+      //     filename: "about.html",
+      //     minify: {
+      //         removeAttributeQuotes: true,
+      //         collapseWhitespace: true,
+      //         removeComments: true
+      //     }
+      // }),
+      // new HtmlWebpackPlugin({
+      //     template: "./src/contact.html",
+      //     inject: true,
+      //     filename: "contact.html",
+      //     minify: {
+      //         removeAttributeQuotes: true,
+      //         collapseWhitespace: true,
+      //         removeComments: true
+      //     }
+      // })
     ],
-    module: {
-        rules: [
-            {
-                test: /\.scss$/,
-                use: [
-                    MiniCssExtractPlugin.loader, //3. Extract css into files
-                    "css-loader", //2. Turns css into commonjs
-                    "sass-loader" //1. Turns sass into css
-                ]
-            }
-        ]
-    }
+  },
+  plugins: [
+    new MiniCssExtractPlugin({ filename: "[name].[contentHash].css" }),
+    new CleanWebpackPlugin(),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader, //3. Extract css into files
+          "css-loader", //2. Turns css into commonjs
+          "sass-loader", //1. Turns sass into css
+        ],
+      },
+    ],
+  },
 });
